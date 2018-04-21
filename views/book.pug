@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  table#best_book(border='1')
+    tr
+      td Digital
+      td Circuit
+      td Analog
+
+  br
+  br
+
+  form#categories(method='GET')
+    input(type='checkbox' name='com' value='Computer')
+    | Computer
+    br
+    input(type='checkbox' name='math' value='Mathematic')
+    | Math
+    br
+    input(type='checkbox' name='phy' value='Physic')
+    | Physic
+    br
+    input(type='checkbox' name='sport' value='Sport')
+    | Sport
+    br
+    br
+    input(type='text' name='book_name' placeholder='Enter book name')
+    br
+    input(type='submit' value='Search')
