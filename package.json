@@ -6,6 +6,8 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
@@ -14,6 +16,10 @@
     "pug": "2.0.0-beta11",
     "sequelize": "^4.37.6",
     "sequelize-cli": "^4.0.0",
+    "should": "^13.2.1",
     "sqlite3": "^4.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^5.1.1"
   }
 }
