@@ -16,14 +16,11 @@ describe('BookApp', () => {
         });
     });
 
-    it('#receive a GET request', (done) => {
+    it('#about page', (done) => {
       chai.request(app)
-        .get('/?com=Computer&math=Mathematic&book_name=Discrete')
+        .get('/about')
         .end((err, res) => {
           res.should.have.status(200);
-          assert('com', 'Computer');
-          assert('math', 'Mathematic');
-          assert('book_name', 'Discrete');
           done();
         });
     });
