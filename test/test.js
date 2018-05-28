@@ -11,6 +11,12 @@ chai.use(chaiHttp);
 
 describe('BookApp', () => {
 
+  // connect to database
+  before(() => {
+    return models.sequelize.sync();
+  });
+
+
   describe('Web Page Test', () => {
 
     it('#home page', done => {
@@ -35,10 +41,6 @@ describe('BookApp', () => {
 
 
   describe('Database Test', () => {
-
-    before(() => {
-      return models.sequelize.sync();
-    });
 
     it('#create 2 categories', done => {
       // create 2 categories
