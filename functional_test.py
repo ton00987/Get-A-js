@@ -31,7 +31,7 @@ class NewVisitorTest(unittest.TestCase):
         self.assertEqual(inputbox[-2].get_attribute('name'), 'book_name')
         self.assertEqual(inputbox[-1].get_attribute('value'), 'Search')
 
-        # Marry choose categories “Computer” and "Mathematic"
+        # Marry choose categories “Computer” and "Math"
         time.sleep(0.5)
         inputbox[0].click()
         inputbox[1].click()
@@ -40,16 +40,14 @@ class NewVisitorTest(unittest.TestCase):
         time.sleep(0.5)
         inputbox[4].send_keys('Discrete')
 
+        # Marry click "Search"
         time.sleep(0.5)
         inputbox[5].click()
 
-        time.sleep(3)
-        self.fail('Finish the test')
-
-        # Marry found “Discrete Mathemathics and Algorithms” that score 4.5 from 5 star
+        # Marry found “Discrete Math” that score 4.2 from 5 star
         table_search_book = self.browser.find_element_by_id('search_book')
         rows = table_search_book.find_elements_by_tag_name('td')
-        self.assertIn('Discrete Mathemathics and Algorithms', [row.text for row in rows])
+        self.assertIn('Discrete Math', [row.text for row in rows])
 
         # Marry quit a website
         time.sleep(3)

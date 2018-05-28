@@ -28,9 +28,9 @@ block content
     br
     input(type='submit' value='Search')
 
-    table
-      each book, index in book_list
-        tr
-          td #{index + 1}.
-          td #{book[0]}
-          td &nbsp;&nbsp;#{book[1]}
+  table#search_book
+    each book, index in book_list
+      tr
+        td #{index + 1}.
+        td #{book[0]}
+        td &nbsp;&nbsp;#{book[1]}

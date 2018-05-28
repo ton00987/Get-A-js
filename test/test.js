@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'test';
+
 const app = require('../app');
 const models = require('../models');
 
@@ -34,11 +36,17 @@ describe('BookApp', () => {
 
   describe('Database Test', () => {
 
+    before(() => {
+      return models.sequelize.sync();
+    });
+
     it('#create 2 categories', done => {
+      // create 2 categories
       models.Category.bulkCreate([
         { name: 'Computer' },
         { name: 'Math' }
       ])
+      // have 2 categories
       .then(() => {
         models.Category.count()
         .then(cnt => {
@@ -49,23 +57,28 @@ describe('BookApp', () => {
     });
 
     it('#create a book in 2 categories', done => {
+      // find categories
       models.Category.findAll({
         where: {name: ['Computer', 'Math']}
       })
+      // create a book
       .then(cate => {
         models.Book.create({
         name: 'Discrete Mathematics',
         score: '4.5'
         })
+        // add new book to 2 categories
         .then(book => {
           cate[0].addBook(book);
           cate[1].addBook(book);
         })
         .then(() => {
+          // have 1 book
           models.Book.count()
           .then(cnt => {
             assert.equal(cnt, 1);
           });
+          // have 2 categories
           models.Category.count()
           .then(cnt => {
             assert.equal(cnt, 2);
@@ -85,6 +98,7 @@ describe('BookApp', () => {
       models.Category.destroy({
         truncate: true
       })
+      // no categories
       .then(() => {
         models.Category.count()
         .then(cnt => {
@@ -96,6 +110,7 @@ describe('BookApp', () => {
       models.Book.destroy({
         truncate: true
       })
+      // no books
       .then(() => {
         models.Book.count()
         .then(cnt => {
