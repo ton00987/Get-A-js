@@ -87,7 +87,12 @@ router.get('/', function(req, res) {
           console.log('Inside for')
           console.log(search_book[0])
           res.render('book', {
-            book_list: search_book[0]
+            book_list: search_book[0],
+            com: req.query['com'],
+            math: req.query['math'],
+            phy: req.query['phy'],
+            sport: req.query['sport'],
+            book_name: book_name
           })
         }
       }
@@ -95,7 +100,12 @@ router.get('/', function(req, res) {
       console.log('Outside for')
       console.log(search_book[0])
       res.render('book', {
-        book_list: search_book[0]
+        book_list: search_book[0],
+        com: req.query['com'],
+        math: req.query['math'],
+        phy: req.query['phy'],
+        sport: req.query['sport'],
+        book_name: book_name
       })
     }
   }

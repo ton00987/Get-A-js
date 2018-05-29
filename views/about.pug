@@ -1,18 +1,48 @@
 extends layout
 
 block content
-  <center><h1 id="myHeader">About Page</h1></center>
 
-  <center><table>
-    <tr>
-      <td><img src="../about/krittanat.jpg" style="width:250px;height:250px;" margin="right"></td>
-      <td><img src="../about/jirawat.jpg" style="width:250px;height:250px;" margin="center"></td>
-      <td><img src="../about/thanabordee.jpg" style="width:250px;height:250px;" margin="left"></td>
-    </tr>
+  nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #ffd699;')
 
-    <tr>
-      <td><center>กฤตณัฐ   อนันต์ชัยลิขิต</center></td>
-      <td><center>จิรวัฒน์   ยุกตวาทิน</center></td>
-      <td><center>ธนบดี    เทพารักษ์</center></td>
-    </tr>
-  </table></center> 
+    span.font-weight-bold.navbar-brand.mb-0.h1 Get-A
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto
+        li.nav-item.active
+          a.nav-link(href='/')
+            | Home
+            span.sr-only (current)
+
+        li.nav-item.active
+          a.nav-link(href='/about') About
+
+  .container-fluid
+
+    .row
+      .col
+      .col-8.bg-light
+        br
+        h1#myHeader(style='text-align:center;') About Page
+
+        table.table.table-borderless
+          tbody
+            tr
+              td(style='text-align:center;')
+                img(src='../about/krittanat.jpg' style='width:250px;height:250px;')
+              td(style='text-align:center;')
+                img(src="../about/jirawat.jpg" style="width:250px;height:250px;")
+              td(style='text-align:center;')
+                img(src="../about/thanabordee.jpg" style="width:250px;height:250px;")
+
+
+            tr
+              td(style='text-align:center;') กฤตณัฐ   อนันต์ชัยลิขิต
+              td(style='text-align:center;') จิรวัฒน์   ยุกตวาทิน
+              td(style='text-align:center;') ธนบดี    เทพารักษ์
+      .col
+
+  script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous')
+  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js' integrity='sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T' crossorigin='anonymous')

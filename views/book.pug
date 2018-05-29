@@ -1,36 +1,123 @@
 extends layout
 
 block content
-  table#best_book(border='1')
-    tr
-      td Digital
-      td Circuit
-      td Analog
 
-  br
-  br
+  nav.navbar.navbar-expand-lg.navbar-light(style='background-color: #ffd699;')
 
-  form#categories(method='GET')
-    input(type='checkbox' name='com' value='Computer')
-    | Computer
-    br
-    input(type='checkbox' name='math' value='Math')
-    | Math
-    br
-    input(type='checkbox' name='phy' value='Physic')
-    | Physic
-    br
-    input(type='checkbox' name='sport' value='Sport')
-    | Sport
-    br
-    br
-    input(type='text' name='book_name' placeholder='Enter book name')
-    br
-    input(type='submit' value='Search')
+    span.font-weight-bold.navbar-brand.mb-0.h1 Get-A
+    button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
 
-    table
-      each book, index in book_list
-        tr
-          td #{index + 1}.
-          td #{book[0]}
-          td &nbsp;&nbsp;#{book[1]}
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto
+        li.nav-item.active
+          a.nav-link(href='/')
+            | Home
+            span.sr-only (current)
+
+        li.nav-item.active
+          a.nav-link(href='/about') About
+
+  .container-fluid
+
+    .row
+      .col
+      .col-8.bg-light
+        .row
+          table#best_book.table(border='1')
+            tbody
+              tr
+                td(style='text-align:center; width: 200px;') Data Structures and Algorithms
+                td(style='text-align:center; width: 200px;') Discrete Math
+                td(style='text-align:center; width: 200px;') Physic II
+                td(style='text-align:center; width: 200px;') Moneyball
+
+        br
+        br
+
+        form#categories(method='GET')
+          .row
+            label.col.form-check-label(for='defaultCheck' )
+              | Categories:
+            .col.form-check
+              if com
+                input.form-check-input(type='checkbox' name='com' value='Computer' checked='')
+                label.form-check-label(for='defaultCheck')
+                  | Computer
+              else
+                input.form-check-input(type='checkbox' name='com' value='Computer')
+                label.form-check-label(for='defaultCheck')
+                  | Computer
+            .col.form-check
+              if math
+                input.form-check-input(type='checkbox' name='math' value='Math' checked='')
+                label.form-check-label(for='defaultCheck')
+                  | Math
+              else
+                input.form-check-input(type='checkbox' name='math' value='Math')
+                label.form-check-label(for='defaultCheck')
+                  | Math
+
+          br
+          .row
+            .col
+            .col.form-check
+              if phy
+                input.form-check-input(type='checkbox' name='phy' value='Physic' checked='')
+                label.form-check-label(for='defaultCheck')
+                  | Physic
+              else
+                input.form-check-input(type='checkbox' name='phy' value='Physic')
+                label.form-check-label(for='defaultCheck')
+                  | Physic
+
+            .col.form-check
+              if sport
+                input.form-check-input(type='checkbox' name='sport' value='Sport' checked='')
+                label.form-check-label(for='defaultCheck')
+                  | Sport
+              else
+                input.form-check-input(type='checkbox' name='sport' value='Sport')
+                label.form-check-label(for='defaultCheck')
+                  | Sport
+
+          br
+          .row.justify-content-end
+            .col(style='padding-left:400px;')
+              if book_name
+                input.form-control(type='text' name='book_name' placeholder='Enter book name' value=book_name)
+              else
+                input.form-control(type='text' name='book_name' placeholder='Enter book name')
+            .col
+              input.btn.btn-info(type='submit' value='Search')
+
+        br
+        br
+
+        .row
+          table#search_table.table.table-hover
+            thead
+              tr
+                th(scope='col' style='width: 100px; height: 50px') No.
+                th(scope='col' style='width: 500px; height: 50px') Name
+                th(scope='col' style='width: 100px; height: 50px') Score
+            tbody
+              - var i = 0;
+              each book, index in book_list
+                tr
+                  th(scope='row' style='height: 50px') #{index + 1}.
+                  td(style='height: 50px') #{book[0]}
+                  td(style='height: 50px') &nbsp;&nbsp;#{book[1]}
+                - i++
+
+        while i < 10
+          br(style='line-height:50px')
+          - i ++
+
+      .col
+
+
+
+  script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous')
+  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js' integrity='sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T' crossorigin='anonymous')
