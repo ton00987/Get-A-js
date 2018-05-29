@@ -19,9 +19,10 @@ class NewVisitorTest(unittest.TestCase):
         # Marry see the top 3 best score books
         table_best_book = self.browser.find_element_by_id('best_book')
         columns = table_best_book.find_elements_by_tag_name('td')
-        self.assertIn('Digital', [column.text for column in columns])
-        self.assertIn('Circuit', [column.text for column in columns])
-        self.assertIn('Analog', [column.text for column in columns])
+        self.assertIn('Data Structures and Algorithms', [column.text for column in columns])
+        self.assertIn('Discrete Math', [column.text for column in columns])
+        self.assertIn('Physic II', [column.text for column in columns])
+        self.assertIn('Moneyball', [column.text for column in columns])
 
         # Marry see many categories and search box
         checkbox = self.browser.find_element_by_id('categories')
@@ -41,7 +42,7 @@ class NewVisitorTest(unittest.TestCase):
         inputbox[4].send_keys('Discrete')
 
         # Marry click "Search"
-        time.sleep(0.5)
+        time.sleep(2)
         inputbox[5].click()
 
         # Marry found “Discrete Math” that score 4.2 from 5 star
@@ -50,7 +51,7 @@ class NewVisitorTest(unittest.TestCase):
         self.assertIn('Discrete Math', [row.text for row in rows])
 
         # Marry quit a website
-        time.sleep(3)
+        time.sleep(5)
         self.browser.quit()
 
 if __name__ == '__main__':
